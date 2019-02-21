@@ -13,7 +13,7 @@
 // Paramètres du jeu
 #define LARGEUR_MAX 42 		// nb max de fils pour un noeud (= nb max de coups possibles)
 
-#define TEMPS 5		// temps de calcul pour un coup avec MCTS (en secondes)
+#define TEMPS 3		// temps de calcul pour un coup avec MCTS (en secondes)
 
 // macros
 #define AUTRE_JOUEUR(i) (1-(i))
@@ -39,7 +39,6 @@ typedef struct EtatSt {
 typedef struct {
     // TODO: à compléter par la définition d'un coup
 
-    /* par exemple, pour morpion: */
     int ligne;
     int colonne;
 
@@ -54,7 +53,6 @@ Etat * copieEtat( Etat * src ) {
 
    // TODO: à compléter avec la copie de l'état src dans etat
 
-   /* par exemple : */
    int i,j;
    for (i=1; i<= 6; i++)
       for ( j=1; j<7; j++)
@@ -71,7 +69,6 @@ Etat * etat_initial( void ) {
 
    // TODO: à compléter avec la création de l'état initial
 
-   /* par exemple : */
    int i,j;
    for (i=1; i<= 6; i++)
       for ( j=1; j<=7; j++)
@@ -85,7 +82,6 @@ void afficheJeu(Etat * etat) {
 
    // TODO: à compléter
 
-   /* par exemple : */
    int i,j;
    printf("   |");
    for ( j = 1; j <=7; j++)
@@ -111,13 +107,13 @@ Coup * nouveauCoup( int i, int j ) {
    Coup * coup = (Coup *)malloc(sizeof(Coup));
 
    // TODO: à compléter avec la création d'un nouveau coup
-
-   /* par exemple : */
    coup->ligne = i;
    coup->colonne = j;
 
+
    return coup;
 }
+
 
 // Demander à l'humain quel coup jouer
 Coup * demanderCoup () {
@@ -126,8 +122,8 @@ Coup * demanderCoup () {
 
    /* par exemple : */
    int i,j;
-   printf("\n quelle ligne ? ") ;
-   scanf("%d",&i);
+   /*printf("\n quelle ligne ? ") ;
+   scanf("%d",&i);*/
    printf(" quelle colonne ? ") ;
    scanf("%d",&j);
 
@@ -141,6 +137,12 @@ int jouerCoup( Etat * etat, Coup * coup ) {
    // TODO: à compléter
 
    /* par exemple : */
+   int lgn;
+   for ( lgn = 1; lgn <=6; ++lgn) {
+      if (etat->plateau[lgn][coup->colonne] == ' '){
+         coup->ligne = lgn;
+      }
+   }
    if ( etat->plateau[coup->ligne][coup->colonne] != ' ' )
       return 0;
    else {
@@ -394,7 +396,7 @@ int main(void) {
 
       }
 
-      fin = testFin( etat );
+      //fin = testFin( etat );
    }	while ( fin == NON ) ;
 
    printf("\n");
