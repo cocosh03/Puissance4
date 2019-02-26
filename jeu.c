@@ -307,15 +307,13 @@ void ordijoue_mcts(Etat * etat, int tempsmax) {
 
    /*  TODO :
        - supprimer la sélection aléatoire du meilleur coup ci-dessus
-       - implémenter l'algorithme MCTS-UCT pour déterminer le meilleur coup ci-dessous
+       - implémenter l'algorithme MCTS-UCT pour déterminer le meilleur coup ci-dessous*/
 
    int iter = 0;
 
    do {
 
 
-
-       // à compléter par l'algorithme MCTS-UCT...
 
 
 
